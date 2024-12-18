@@ -1,0 +1,110 @@
+.showed-header,
+.hidden-header {
+	height: 100vh;
+	width: 150px;
+	padding: 1em;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background-color: rgba($white, 0.07);
+}
+
+.header-logo {
+	width: 70px;
+	cursor: pointer;
+	opacity: 0.9;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.header-sections {
+	list-style: none;
+	display: grid;
+	grid-gap: 2em;
+	justify-items: center;
+
+	& > p {
+		color: $white;
+		opacity: 0.5;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.choose-language {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+	button {
+		width: 100px;
+		height: 40px;
+		border: none;
+		color: rgba($white, 0.9);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		opacity: 0.7;
+
+		img {
+			width: 15px;
+			margin-right: 5px;
+		}
+	}
+
+	& > button {
+		background-color: rgba($white, 0.07);
+		border: 1px solid transparent;
+	}
+
+	&:hover > button {
+		border-color: rgba($white, 0.07);
+	}
+}
+
+.language-selector {
+	background-color: rgba($white, 0.07);
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 40px;
+
+	button {
+		background-color: transparent;
+
+		&:hover {
+			background-color: rgba($white, 0.07);
+		}
+	}
+}
+
+@media (max-width: 1000px) {
+	.showed-header,
+	.hidden-header {
+		background-color: $black;
+		width: 100vw;
+		z-index: 1000;
+		left: auto;
+		right: -100vw;
+		transition: right 0.5s;
+	}
+
+	.showed-header {
+		right: 0;
+	}
+
+	.header-logo {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,182 @@
+.jobs-container {
+	position: relative;
+	width: 100%;
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5em;
+}
+
+.job-item {
+	margin-bottom: 2em;
+	width: 100%;
+	display: grid;
+	grid-gap: 25px 20px;
+	grid-template-columns: 1fr 20px 1fr;
+	grid-template-rows: 30px 1fr;
+	grid-template-areas:
+		'company circle position'
+		'date empty tasks';
+}
+
+.time-line {
+	margin-top: 4em;
+	height: 100%;
+	border: none;
+	border-left: 4px solid lighten($black, 7);
+	position: absolute;
+	top: -3em;
+	left: 50%;
+	margin-left: -2px;
+}
+
+.job-circle {
+	width: 20px;
+	height: 20px;
+	transform: rotate(45deg);
+	background-color: $theme;
+	grid-area: circle;
+	z-index: 900;
+	margin-top: 7px;
+	border-radius: 1.5px;
+}
+
+.job-item:first-of-type .job-circle {
+	background-color: transparent;
+	outline: 2px solid $theme;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& > div {
+		width: 70%;
+		height: 70%;
+		background-color: $theme;
+	}
+}
+
+.job-company,
+.job-date {
+	text-align: end;
+}
+
+.job-company {
+	padding-top: 5px;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgba($white, 0.7);
+	grid-area: company;
+
+	&:hover {
+		color: rgba($white, 0.9);
+	}
+}
+
+.job-date {
+	font-size: 16px;
+	color: rgba($white, 0.3);
+	grid-area: date;
+}
+
+.job-position {
+	font-size: 20px;
+	font-weight: 700;
+	color: $theme;
+	padding-top: 5px;
+	margin-bottom: 20px;
+	grid-area: position;
+}
+
+.job-tasks {
+	list-style: circle;
+	padding-left: 1.5em;
+	grid-area: tasks;
+
+	li {
+		font-size: 16px;
+		color: rgba($white, 0.7);
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.jobs-container {
+		width: 700px;
+	}
+
+	.time-line {
+		left: 10px;
+	}
+
+	.job-circle {
+		margin-top: 4px;
+	}
+
+	.job-item {
+		grid-gap: 5px 20px;
+		grid-template-columns: 20px 1fr;
+		grid-template-rows: repeat(3, 30px) 1fr;
+		grid-template-areas:
+			'circle position'
+			'empty company'
+			'empty date'
+			'empty tasks';
+	}
+
+	.job-position,
+	.job-company {
+		padding-top: 0;
+	}
+
+	.job-position {
+		margin-bottom: 0;
+	}
+
+	.job-company,
+	.job-date {
+		text-align: start;
+	}
+}
+
+@media (max-width: 800px) {
+	.jobs-container {
+		width: 100%;
+		margin-top: 3em;
+	}
+}
+
+@media (max-width: 600px) {
+	.jobs-container {
+		margin-top: 0;
+	}
+
+	.time-line,
+	.job-circle,
+	.job-item:first-of-type .job-circle {
+		display: none;
+	}
+
+	.job-item {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.job-position,
+	.job-company,
+	.job-date {
+		text-align: center;
+	}
+
+	.job-position,
+	.job-company,
+	.job-date,
+	.job-tasks {
+		margin-bottom: 5px;
+	}
+
+	.job-tasks {
+		margin-top: 10px;
+	}
+}

@@ -1,0 +1,40 @@
+@mixin button($border, $background, $color) {
+	display: inline-block;
+	padding: 0.7em;
+	font-size: 1.1em;
+	cursor: pointer;
+	width: 170px;
+	text-align: center;
+	text-decoration: none;
+	border: 2px solid $border;
+	background-color: $background;
+	color: $color;
+	font-weight: 600;
+
+	&:hover {
+		@content;
+	}
+
+	@media (max-width: 1000px) {
+		font-size: 0.9em;
+		width: 150px;
+	}
+}
+
+.solid-button {
+	@include button($theme, $theme, $white) {
+		box-shadow: 0 0 10px 1px $theme;
+	}
+}
+
+.ghost-button {
+	@include button($white, transparent, $white) {
+		background-color: rgba($white, 0.1);
+	}
+}
+
+.empty-button {
+	@include button(transparent, transparent, $white) {
+		text-decoration: underline;
+	}
+}
